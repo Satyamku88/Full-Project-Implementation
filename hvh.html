@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Project</title>
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body & Container */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #2575fc;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            color: #2575fc;
+            margin-top: 10px;
+        }
+
+        .header p {
+            color: #555;
+            font-size: 1.2em;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #2575fc;
+            color: #fff;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        p, ul {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Buttons & Inputs */
+        button, input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        button {
+            background-color: #2575fc;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a5fbd;
+        }
+
+        /* To-Do List */
+        #todoList li {
+            background: #eaf0fb;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 8px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Product Listing */
+        .product-section .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .product-item {
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            border-color: #2575fc;
+        }
+
+        .product-item h3 {
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section with Profile Image -->
+        <div class="header">
+            <img src="WhatsApp Image 2024-10-13 at 15.34.41_7bba2c45.jpg" alt="Profile Picture"> <!-- Replace with your image URL -->
+            <h1>SATYAM KUMAR KASYAP</h1>
+            <p>JAVA Developer & Web Developer</p>
+        </div>
+        
+        <!-- Navigation -->
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="#todo">To-Do List</a>
+            <a href="#products">Products</a>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi, I'm a web developer skilled in HTML, CSS, and JavaScript, building interactive, responsive websites.</p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li>Project 1: Personal Portfolio</li>
+                <li>Project 2: To-Do List App</li>
+                <li>Project 3: Product Listing with Filters</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
+        <!-- To-Do List Section with Local Storage -->
+        <section id="todo" class="todo-section">
+            <h2>To-Do List</h2>
+            <input type="text" id="todoInput" placeholder="Add a new task...">
+            <button onclick="addTask()">Add Task</button>
+            <ul id="todoList"></ul>
+        </section>
+
+        <!-- Product Listing Section with Filtering and Sorting -->
+        <section id="products" class="product-section">
+            <h2>Product Listing</h2>
+            <div class="filters">
+                <label>Filter by Category:
+                    <select id="categoryFilter" onchange="filterProducts()">
+                        <option value="all">All</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                    </select>
+                </label>
+                <label>Sort by Price:
+                    <select id="priceSort" onchange="sortProducts()">
+                        <option value="asc">Low to High</option>
+                        <option value="desc">High to Low</option>
+                    </select>
+                </label>
+            </div>
+            <div class="product-list" id="productList"></div>
+        </section>
+    </div>
+
+    <script>
+        // To-Do List with Local Storage
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task;
+                todoList.appendChild(li);
+            });
+        }
+
+        function addTask() {
+            const todoInput = document.getElementById('todoInput');
+            const task = todoInput.value.trim();
+            if (task) {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.push(task);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                loadTasks();
+                todoInput.value = '';
+            }
+        }
+
+        loadTasks();
+
+        // Product Listing with Filtering and Sorting
+        const products = [
+            { id: 1, name: 'Laptop', category: 'electronics', price: 1200 },
+            { id: 2, name: 'T-shirt', category: 'clothing', price: 20 },
+            { id: 3, name: 'Headphones', category: 'electronics', price: 100 },
+            { id: 4, name: 'Jeans', category: 'clothing', price: 50 }
+        ];
+
+        function displayProducts(productArray) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            productArray.forEach(product => {
+                const div = document.createElement('div');
+                div.className = 'product-item';
+                div.innerHTML = `<h3>${product.name}</h3><p>Category: ${product.category}</p><p>Price: $${product.price}</p>`;
+                productList.appendChild(div);
+            });
+        }
+
+        function filterProducts() {
+            const category = document.getElementById('categoryFilter').value;
+            const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+            displayProducts(filteredProducts);
+        }
+
+        function sortProducts() {
+            const order = document.getElementById('priceSort').value;
+            const sortedProducts = [...products].sort((a, b) => order === 'asc' ? a.price - b.price : b.price - a.price);
+            displayProducts(sortedProducts);
+        }
+
+        // Initial product display
+        displayProducts(products);
+    </script>
+</body>
+</html>
